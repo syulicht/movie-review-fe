@@ -9,7 +9,18 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    needs: lint
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Node.js をセットアップ
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "npm"
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
