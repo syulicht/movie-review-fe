@@ -12,8 +12,8 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "npm run lint",
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint src/**/*.{js,jsx,ts,tsx}",
       "npm run format"
     ]
   },
