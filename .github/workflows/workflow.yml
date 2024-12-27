@@ -7,6 +7,30 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
 jobs:
+  lint:
+    name: Run Linter
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. リポジトリをチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Node.js をセットアップ
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16" # 使用するNode.jsのバージョン
+          cache: "npm"
+
+      # 3. 依存関係をインストール
+      - name: Install dependencies
+        run: npm install
+
+      # 4. ESLintを実行
+      - name: Run ESLint
+        run: npm run lint
+
   deploy:
     runs-on: ubuntu-latest
     needs: lint
