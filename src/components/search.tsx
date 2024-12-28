@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const search = () => {
+export const Search = (): React.JSX.Element => {
   return (
     <div className="w-2/5 bg-white h-12 rounded-full flex flex-column justify-between items-center">
       <input
@@ -20,5 +20,3 @@ const search = () => {
     </div>
   );
 };
-
-export default search;

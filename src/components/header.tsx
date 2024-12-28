@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import MenuLink from "@/components/menuLink";
-import Search from "@/components/search";
+import { MenuLink } from "@/components/MenuLink";
+import { Search } from "@/components/Search";
 
-const header = () => {
+export const Header = (): React.JSX.Element => {
   return (
     <div className="w-full flex flex-column justify-between items-center">
       <Image
@@ -25,5 +25,3 @@ const header = () => {
     </div>
   );
 };
-
-export default header;

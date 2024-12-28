@@ -1,9 +1,11 @@
-import Header from "@/components/header";
+import { Header } from "@/components/Header";
 
-export default function Home() {
+const Home = (): React.JSX.Element => {
   return (
     <div className="w-full flex flex-row justify-center">
       <Header />
     </div>
   );
-}
+};
+
+export default Home;

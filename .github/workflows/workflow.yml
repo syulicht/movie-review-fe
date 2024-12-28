@@ -1,6 +1,8 @@
 name: Github Auto Deploy
 
-on: push
+on:
+  push:
+    branch: [main]
 
 env:
   VERCEL_ORG_ID: ${{ secrets.ORG_ID }}

@@ -6,12 +6,10 @@ type Props = {
   path: string;
 };
 
-const menuLink = (props: Props) => {
+export const MenuLink = (props: Props): React.JSX.Element => {
   return (
     <div className="text-white">
       <Link href={props.path}>{props.name}</Link>
     </div>
   );
 };
-
-export default menuLink;
