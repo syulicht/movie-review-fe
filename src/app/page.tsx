@@ -5,7 +5,7 @@ const Home = async () => {
   const movies = await fetchRecommendedMovies();
 
   return (
-    <main className="w-full min-h-screen flex flex-row justify-center">
+    <main className="w-full min-h-screen">
       <TopCarousel movies={movies.movies} />
     </main>
   );
