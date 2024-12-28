@@ -1,10 +1,13 @@
-import { Header } from "@/components/Header";
+import { fetchRecommendedMovies } from "@/utils/api/movieApi";
+import { TopCarousel } from "./components/TopCarousel";
 
-const Home = (): React.JSX.Element => {
+const Home = async () => {
+  const movies = await fetchRecommendedMovies();
+
   return (
-    <div className="w-full flex flex-col justify-center">
-      <Header />
-    </div>
+    <main className="w-full min-h-screen">
+      <TopCarousel movies={movies.movies} />
+    </main>
   );
 };
 

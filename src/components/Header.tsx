@@ -5,7 +5,7 @@ import { Search } from "@/components/Search";
 
 export const Header = (): React.JSX.Element => {
   return (
-    <div className="w-full flex flex-column justify-between items-center">
+    <header className="w-full flex flex-column justify-between items-center">
       <Image
         width={80}
         height={80}
@@ -19,6 +19,6 @@ export const Header = (): React.JSX.Element => {
         <MenuLink image="List.svg" path="/movie-list" />
         <MenuLink image="account_circle.svg" path="/account" />
       </div>
-    </div>
+    </header>
   );
 };
