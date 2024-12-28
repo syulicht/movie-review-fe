@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import MenuLink from "@/app/components/menuLink";
-import Search from "@/app/components/search";
+import MenuLink from "@/components/menuLink";
+import Search from "@/components/search";
 
 const header = () => {
   return (
