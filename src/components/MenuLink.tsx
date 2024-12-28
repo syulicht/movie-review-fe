@@ -1,15 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
-  name: string;
+  image: string;
   path: string;
 };
 
 export const MenuLink = (props: Props): React.JSX.Element => {
   return (
     <div className="text-white">
-      <Link href={props.path}>{props.name}</Link>
+      <Link href={props.path}>
+        <Image src={props.image} alt="icon" width={50} height={50} />
+      </Link>
     </div>
   );
 };

@@ -13,15 +13,12 @@ export const Header = (): React.JSX.Element => {
         alt="logo"
         className="ml-4"
       />
-      <div className="flex flex-column w-2/5 justify-around">
-        <MenuLink name="ホーム" path="/" />
-        <MenuLink name="映画のリスト" path="/movie-list" />
-        <MenuLink name="アカウント" path="/account" />
-      </div>
       <Search />
-      <button className="mr-4">
-        <Image width={35} height={40} src={"/Login.svg"} alt="login icon" />
-      </button>
+      <div className="flex flex-column w-1/5 justify-around">
+        <MenuLink image="Home.svg" path="/" />
+        <MenuLink image="List.svg" path="/movie-list" />
+        <MenuLink image="account_circle.svg" path="/account" />
+      </div>
     </div>
   );
 };
