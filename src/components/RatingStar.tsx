@@ -1,23 +1,21 @@
 import React from "react";
-import ReactStars from "react-stars";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 type Props = {
   rate: number;
-  edit: boolean;
-  size: number;
+  readonly: boolean;
+  style: object;
 };
 
 const RatingStar = (props: Props): React.JSX.Element => {
   return (
     <div>
-      <ReactStars
-        count={5}
-        edit={props.edit}
-        size={props.size}
+      <Rating
+        style={props.style}
+        items={5}
+        readOnly={props.readonly}
         value={props.rate}
-        color1={"#ccc"}
-        color2={"#ffd700"}
-        half={true}
       />
     </div>
   );
