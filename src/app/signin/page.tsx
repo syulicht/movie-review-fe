@@ -4,7 +4,7 @@ import React from "react";
 const Home = (): React.JSX.Element => {
   return (
     <div>
-      <AccountForm type="Signin" />
+      <AccountForm type="SignIn" />
     </div>
   );
 };

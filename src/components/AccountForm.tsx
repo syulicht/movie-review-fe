@@ -8,7 +8,7 @@ import { z } from "zod";
 import { loginUser } from "@/utils/server_actoins/login";
 import { useRouter } from "next/navigation";
 
-type Props = { type: string };
+type Props = { type: "SignUp" | "SignIn" };
 
 type RegisterFormData = z.infer<typeof registerSchema>;
 const registerSchema = z.object({
