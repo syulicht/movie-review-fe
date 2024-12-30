@@ -53,7 +53,7 @@ export const AccountForm = (props: Props) => {
     } else {
       try {
         const result = await loginUser(data.email, data.password);
-        if (result === "success") {
+        if (result) {
           router.push("/");
         } else {
           setFailureMsg("ログインに失敗しました");

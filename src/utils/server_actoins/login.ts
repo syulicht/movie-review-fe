@@ -20,9 +20,9 @@ export const loginUser = async (email: string, password: string) => {
         secure: true,
         sameSite: "strict",
       });
-      return "success";
+      return true;
     } else {
-      return "failure";
+      return false;
     }
   } catch (e) {
     console.error(e);

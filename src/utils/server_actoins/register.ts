@@ -25,9 +25,9 @@ export const registerUser = async (
         secure: true,
         sameSite: "strict",
       });
-      return "success";
+      return true;
     } else {
-      return "failure";
+      return false;
     }
   } catch (e) {
     console.error(e);
