@@ -23,7 +23,7 @@ export const movieDetailSchema = z.object({
   overview: z.string(),
   backdropUrl: z.string(),
   posterUrl: z.string(),
-  releaseDate: z.coerce.date(),
+  releaseDate: z.string(),
   runtime: z.number(),
   rating: z.number(),
   productionCountries: z.array(z.string()),

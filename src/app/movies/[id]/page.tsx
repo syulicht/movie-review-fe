@@ -1,4 +1,9 @@
+import { ReviewCard } from "@/app/movies/[id]/components/ReviewCard";
 import { MovieDescription } from "./components/MovieDescription";
+import { PostReviewContainer } from "./components/PostReviewContainer";
+import { cookies } from "next/headers";
+import Image from "next/image";
+import { fetchMovieDetail } from "@/utils/api/movieApi";
 
 const MovieDetailPage = async ({
   params,
@@ -7,35 +12,41 @@ const MovieDetailPage = async ({
 }) => {
   const id = (await params).id;
 
+  const cookieList = await cookies();
+  const isLogin = cookieList.has("token");
+
+  const movie = await fetchMovieDetail(Number(id));
+
   return (
     <main className="w-full min-h-screen text-white">
-      <MovieDescription
-        movie={{
-          id: Number(id),
-          title: "ソニック × シャドウ TOKYO MISSION",
-          backdropUrl:
-            "https://image.tmdb.org/t/p/original/zOpe0eHsq0A2NvNyBbtT6sj53qV.jpg",
-          overview:
-            "ついに舞台はセガとソニックの母国である日本。闇のダークヒーロー＜シャドウ＞が東京・渋谷に降臨！ソニック、テイルス、ナックルズが最強ダークヒーローに立ち向かうハイスピードバトルが開幕！",
-          posterUrl:
-            "https://image.tmdb.org/t/p/original/A5cYeCk3Ddmy5yOKahPznohn3eF.jpg",
-          releaseDate: new Date("2024-12-31"),
-          runtime: 120,
-          rating: 4.5,
-          productionCountries: ["日本"],
-          genres: [
-            {
-              id: 28,
-              name: "アクション",
-            },
-            {
-              id: 878,
-              name: "サイエンスフィクション",
-            },
-          ],
-          reviews: [],
-        }}
-      />
+      <div className="fixed -z-10 w-screen h-screen bg-black bg-opacity-70" />
+      <div className="fixed -z-20 w-screen h-screen">
+        <Image
+          src={movie.backdropUrl}
+          alt={`${movie.title}の画像`}
+          fill
+          style={{
+            objectFit: "contain",
+          }}
+          priority
+        />
+      </div>
+
+      <MovieDescription movie={movie} />
+
+      <div className="flex flex-col gap-6 items-center mt-10">
+        <h2 className="text-2xl font-bold">この作品のレビュー</h2>
+
+        {movie.reviews.length ? (
+          movie.reviews.map((review) => (
+            <ReviewCard review={review} key={review.id} />
+          ))
+        ) : (
+          <p className="mt-5">レビューはありません</p>
+        )}
+      </div>
+
+      {isLogin && <PostReviewContainer movieId={Number(id)} />}
     </main>
   );
 };

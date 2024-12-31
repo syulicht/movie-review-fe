@@ -1,6 +1,7 @@
 import { MovieDetail } from "@/types/movie";
 import Image from "next/image";
 import { GenreChip } from "./GenreChip";
+import { RatingStar } from "@/components/RatingStar";
 
 type Props = {
   movie: MovieDetail;
@@ -22,8 +23,11 @@ export const MovieDescription = ({ movie }: Props): React.JSX.Element => {
       </div>
       <div className="grow w-3/5 px-10">
         <h1 className="mt-10 font-bold text-3xl">{movie.title}</h1>
+        <div className="my-3">
+          <RatingStar rating={movie.rating} readonly />
+        </div>
         <p className="my-3 text-xl text-gray-400">
-          {movie.releaseDate.getFullYear()}年 |{" "}
+          {new Date(movie.releaseDate).getFullYear()}年 |{" "}
           {movie.productionCountries.join(", ")}
         </p>
         <p className="my-3 text-xl text-gray-400">{movie.runtime}分</p>

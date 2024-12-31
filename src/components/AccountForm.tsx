@@ -1,11 +1,12 @@
 "use client";
-import { registerUser } from "@/utils/server_actoins/register";
+
+import { registerUser } from "@/actions/register";
 import React, { useState } from "react";
-import { SubmitButton } from "./SubmitButton";
+import { Button } from "./Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { loginUser } from "@/utils/server_actoins/login";
+import { loginUser } from "@/actions/login";
 import { useRouter } from "next/navigation";
 
 type Props = { type: "SignUp" | "SignIn" };
@@ -87,7 +88,7 @@ export const AccountForm = (props: Props) => {
           {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div>
-          <SubmitButton title={props.type} class="" />
+          <Button isTypeSubmit>{props.type}</Button>
         </div>
       </form>
     </>

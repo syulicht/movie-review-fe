@@ -9,3 +9,10 @@ export const reviewSchema = z.object({
 });
 
 export type Review = z.infer<typeof reviewSchema>;
+
+export const postReviewSchema = z.object({
+  content: z.string(),
+  rating: z.number(),
+});
+
+export type PostReview = z.infer<typeof postReviewSchema>;
