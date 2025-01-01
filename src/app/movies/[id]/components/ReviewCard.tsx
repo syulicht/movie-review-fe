@@ -12,7 +12,7 @@ export const ReviewCard = ({ review }: Props): React.JSX.Element => {
       <div className="w-1/6">
         <div className="w-16 h-16 rounded-[32px] mx-auto mb-2 overflow-hidden relative">
           <Image
-            src="/account_circle.svg"
+            src="/account.svg"
             alt="ユーザーアイコン"
             fill
             style={{

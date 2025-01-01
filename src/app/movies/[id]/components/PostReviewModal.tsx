@@ -21,16 +21,20 @@ export const PostReviewModal = ({
 }: Props): React.JSX.Element => {
   const [rating, setRating] = useState(0);
   const [reviewContent, setReviewContent] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
+
     const { status } = await postReview(
       { rating, content: reviewContent },
       movieId,
     );
 
+    setIsLoading(false);
     if (status === "success") {
       closeModal();
       router.refresh();
@@ -59,7 +63,9 @@ export const PostReviewModal = ({
 
           <div className="my-4 flex gap-5">
             <Button onClick={closeModal}>キャンセル</Button>
-            <Button isTypeSubmit>投稿する</Button>
+            <Button isTypeSubmit isLoading={isLoading}>
+              投稿する
+            </Button>
           </div>
         </form>
       </dialog>

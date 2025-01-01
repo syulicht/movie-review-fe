@@ -18,7 +18,7 @@ export const postReview = async (
 ): Promise<Result> => {
   const cookieList = await cookies();
   const token = cookieList.get("token")?.value ?? "";
-  const res = await fetch(`${process.env.BE_URL}/movies/${movieId}`, {
+  const res = await fetch(`${process.env.BE_URL}/reviews/${movieId}`, {
     method: "post",
     headers: {
       "Content-Type": "application/json",

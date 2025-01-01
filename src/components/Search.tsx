@@ -10,12 +10,7 @@ export const Search = (): React.JSX.Element => {
         placeholder="search..."
       />
       <button className="mr-4">
-        <Image
-          src={"/searchIcon.svg"}
-          width={30}
-          height={30}
-          alt="search icon"
-        />
+        <Image src={"/search.svg"} width={30} height={30} alt="search icon" />
       </button>
     </div>
   );
