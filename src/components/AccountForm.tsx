@@ -65,31 +65,49 @@ export const AccountForm = (props: Props) => {
     reset();
   };
   return (
-    <>
-      <h3>{props.type}</h3>
-      {failureMsg !== "" && <p className="text-red-50">{failureMsg}</p>}
-      <form className="bg-white" onSubmit={handleSubmit(onSubmit)}>
+    <div className="w-full flex flex-cols justify-center">
+      <form
+        className="text-white w-1/2 border-white flex flex-col items-center py-20 rounded-2xl"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h3 className="text-5xl mb-12">{props.type}</h3>
+        {failureMsg !== "" && <p className="text-red-50">{failureMsg}</p>}
         {props.type === "SignUp" && (
-          <div>
-            <label>Name</label>
-            <input type="text" {...register("name")} />
+          <div className="flex flex-col w-2/3 h-20 mb-12">
+            <label className="text-3xl">Name</label>
+            <input
+              type="text"
+              {...register("name")}
+              className="text-black h-16 rounded-xl p-4"
+            />
             {errors.name && <p>{errors.name.message}</p>}
           </div>
         )}
-        <div>
-          <label>Email</label>
-          <input type="text" {...register("email")} />
+        <div className="flex flex-col w-2/3 h-20 mb-12">
+          <label className="text-3xl">Email</label>
+          <input
+            type="text"
+            {...register("email")}
+            className="text-black h-16 rounded-xl p-4"
+          />
           {errors.email && <p>{errors.email.message}</p>}
         </div>
-        <div>
-          <label>Password</label>
-          <input type="password" {...register("password")} />
+        <div className="flex flex-col w-2/3 h-20 mb-12">
+          <label className="text-3xl">Password</label>
+          <input
+            type="password"
+            {...register("password")}
+            className="text-black h-16 rounded-xl p-4"
+          />
           {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div>
-          <SubmitButton title={props.type} class="" />
+          <SubmitButton
+            title={props.type}
+            class="py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75y"
+          />
         </div>
       </form>
-    </>
+    </div>
   );
 };
