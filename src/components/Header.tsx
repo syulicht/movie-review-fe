@@ -16,7 +16,7 @@ export const Header = (): React.JSX.Element => {
       <Search />
       <div className="flex flex-column w-1/5 justify-around">
         <MenuLink image="Home.svg" path="/" />
-        <MenuLink image="List.svg" path="/movie-list" />
+        <MenuLink image="List.svg" path="/search" />
         <MenuLink image="account_circle.svg" path="/account" />
       </div>
     </header>
