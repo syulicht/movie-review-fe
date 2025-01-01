@@ -16,7 +16,6 @@ export const registerUser = async (
       body: JSON.stringify({ name: name, email: email, password: password }),
     });
     const headers = resultFetch.headers;
-    console.log(resultFetch);
     const token = headers.get("Authorization");
     if (token) {
       const cookieList = await cookies();
