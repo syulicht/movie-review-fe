@@ -1,20 +1,24 @@
-"use client";
-import { cookies } from "next/headers";
-import { useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import { fetchRecommendedMovies } from "@/utils/api/movieApi";
+import React from "react";
+import { MovieList } from "./components/MovieList";
+import { SearchFilter } from "./components/SearchFilter";
 
-const Home = (): React.JSX.Element => {
-  const searchParams = useSearchParams();
-  const search = searchParams.get("keyword");
+const Home = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ keyword: string }>;
+}) => {
+  const movies = (await fetchRecommendedMovies()).movies;
+  const keywords = (await searchParams).keyword
+    ? (await searchParams).keyword.split(" ")
+    : [];
 
-  useEffect(() => {
-    const fetchList = async () => {
-      const cookieList = cookies();
-      console.log(cookieList);
-    };
-    fetchList();
-  }, [search]);
-  return <div>page</div>;
+  return (
+    <div>
+      <SearchFilter keywords={keywords} searchCount={movies.length} />
+      <MovieList movies={movies} />
+    </div>
+  );
 };
 
 export default Home;

@@ -23,3 +23,14 @@ export const fetchMovieDetail = async (
   });
   return fetchResult.json();
 };
+
+export const fetchMovieList = async (
+  keyword: string,
+): Promise<RecommendedMoviesResponse> => {
+  const fetchResult = await fetch(`${process.env.BE_URL}/search`, {
+    method: "post",
+    cache: "no-store",
+    body: JSON.stringify({ keyword: keyword }),
+  });
+  return fetchResult.json();
+};
