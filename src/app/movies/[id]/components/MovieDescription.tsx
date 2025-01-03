@@ -1,6 +1,6 @@
 import { MovieDetail } from "@/types/movie";
 import Image from "next/image";
-import { GenreChip } from "./GenreChip";
+import { Chip } from "../../../../components/Chip";
 import { RatingStar } from "@/components/RatingStar";
 
 type Props = {
@@ -34,7 +34,7 @@ export const MovieDescription = ({ movie }: Props): React.JSX.Element => {
         <p className="my-3 text-xl">{movie.overview}</p>
         <div className="flex flex-wrap gap-3 mt-5">
           {movie.genres.map((genre) => (
-            <GenreChip name={genre.name} key={genre.id} />
+            <Chip name={genre.name} key={genre.id} />
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
-import { MovieDetail, RecommendedMovie } from "@/types/movie";
+import { MovieDetail, MovieSummary } from "@/types/movie";
 
 export type RecommendedMoviesResponse = {
-  movies: RecommendedMovie[];
+  movies: MovieSummary[];
 };
 
 export const fetchRecommendedMovies =
@@ -21,5 +21,18 @@ export const fetchMovieDetail = async (
   const fetchResult = await fetch(`${process.env.BE_URL}/movies/${movieId}`, {
     cache: "no-store",
   });
+  return fetchResult.json();
+};
+
+export const fetchMovieList = async (
+  keyword: string,
+  page: number,
+): Promise<RecommendedMoviesResponse> => {
+  const fetchResult = await fetch(
+    `${process.env.BE_URL}/movies/search?keyword=${keyword}&page=${page}&sort=popular`,
+    {
+      cache: "no-store",
+    },
+  );
   return fetchResult.json();
 };

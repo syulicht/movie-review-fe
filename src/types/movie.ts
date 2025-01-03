@@ -8,7 +8,7 @@ export const recommendedMovieSchema = z.object({
   rating: z.number(),
 });
 
-export type RecommendedMovie = z.infer<typeof recommendedMovieSchema>;
+export type MovieSummary = z.infer<typeof recommendedMovieSchema>;
 
 export const genreSchema = z.object({
   id: z.number(),
