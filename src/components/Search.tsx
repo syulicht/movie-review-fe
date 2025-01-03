@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 export const Search = (): React.JSX.Element => {
   const [keyword, setKeyword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const searchParams = useSearchParams();
   const router = useRouter();
   const handleSearch = () => {
     if (keyword === "") {
@@ -16,6 +17,9 @@ export const Search = (): React.JSX.Element => {
     setKeyword("");
     setErrorMsg("");
   };
+  useEffect(() => {
+    setErrorMsg("");
+  }, [searchParams]);
   return (
     <div className="w-2/5 flex flex-col">
       <div className="w-full bg-white h-12 rounded-full flex flex-column justify-between items-center">
