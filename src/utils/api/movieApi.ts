@@ -1,7 +1,7 @@
-import { MovieDetail, RecommendedMovie } from "@/types/movie";
+import { MovieDetail, MovieSummary } from "@/types/movie";
 
 export type RecommendedMoviesResponse = {
-  movies: RecommendedMovie[];
+  movies: MovieSummary[];
 };
 
 export const fetchRecommendedMovies =

@@ -1,14 +1,14 @@
 import { RatingStar } from "@/components/RatingStar";
-import { RecommendedMovie } from "@/types/movie";
+import { MovieSummary } from "@/types/movie";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
-  movie: RecommendedMovie;
+  movie: MovieSummary;
 };
 
-export const MovieItems = ({ movie }: Props): React.JSX.Element => {
+export const MovieItem = ({ movie }: Props): React.JSX.Element => {
   return (
     <Link
       href={`/movies/${movie.id}`}

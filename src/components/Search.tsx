@@ -7,7 +7,7 @@ export const Search = (): React.JSX.Element => {
   const [keyword, setKeyword] = useState("");
   const router = useRouter();
   const handleSearch = () => {
-    router.push(`/search?keyword=${keyword}`);
+    router.push(`/search?keyword=${keyword}&page=1`);
     setKeyword("");
   };
   return (
