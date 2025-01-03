@@ -2,6 +2,7 @@ import { fetchRecommendedMovies } from "@/utils/api/movieApi";
 import React from "react";
 import { MovieList } from "./components/MovieList";
 import { SearchFilter } from "./components/SearchFilter";
+import { SkeltonItem } from "./components/SkeltonItem";
 
 const SearchPage = async ({
   searchParams,
@@ -12,6 +13,15 @@ const SearchPage = async ({
     ? (await searchParams).keyword.split(" ")
     : [];
   const page = Number((await searchParams).page) ?? 1;
+  if (keywords.length === 0) {
+    return (
+      <div className="space-y-4">
+        {[...Array(10)].map((_, index) => (
+          <SkeltonItem key={index} />
+        ))}
+      </div>
+    );
+  }
   const movies = (await fetchRecommendedMovies()).movies;
 
   return (
