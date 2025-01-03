@@ -26,11 +26,13 @@ export const fetchMovieDetail = async (
 
 export const fetchMovieList = async (
   keyword: string,
+  page: number,
 ): Promise<RecommendedMoviesResponse> => {
-  const fetchResult = await fetch(`${process.env.BE_URL}/search`, {
-    method: "post",
-    cache: "no-store",
-    body: JSON.stringify({ keyword: keyword }),
-  });
+  const fetchResult = await fetch(
+    `${process.env.BE_URL}/movies/search?keyword=${keyword}&page=${page}&sort=popular`,
+    {
+      cache: "no-store",
+    },
+  );
   return fetchResult.json();
 };

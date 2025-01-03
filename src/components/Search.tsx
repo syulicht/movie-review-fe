@@ -17,6 +17,11 @@ export const Search = (): React.JSX.Element => {
     setKeyword("");
     setErrorMsg("");
   };
+  const handleEnterKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    handleSearch();
+  };
   useEffect(() => {
     setErrorMsg("");
   }, [searchParams]);
@@ -29,6 +34,7 @@ export const Search = (): React.JSX.Element => {
           placeholder="search..."
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
+          onKeyDown={(e) => handleEnterKeyDown(e)}
         />
         <button className="mr-4" onClick={handleSearch}>
           <Image src={"/search.svg"} width={30} height={30} alt="search icon" />
