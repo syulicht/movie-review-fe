@@ -1,4 +1,4 @@
-import { fetchRecommendedMovies } from "@/utils/api/movieApi";
+import { fetchMovieList } from "@/utils/api/movieApi";
 import React from "react";
 import { MovieList } from "./components/MovieList";
 import { SearchFilter } from "./components/SearchFilter";
@@ -7,10 +7,10 @@ import { SkeltonItem } from "./components/SkeltonItem";
 const SearchPage = async ({
   searchParams,
 }: {
-  searchParams: Promise<{ keyword: string; page: string }>;
+  searchParams: Promise<{ query: string; page: string }>;
 }) => {
-  const keywords = (await searchParams).keyword
-    ? (await searchParams).keyword.split(" ")
+  const keywords = (await searchParams).query
+    ? (await searchParams).query.split(" ")
     : [];
   const page = Number((await searchParams).page) ?? 1;
   if (keywords.length === 0) {
@@ -22,12 +22,19 @@ const SearchPage = async ({
       </div>
     );
   }
-  const movies = (await fetchRecommendedMovies()).movies;
+  const data = await fetchMovieList(keywords[0], page);
+  const movies = data.movies;
+  const total = data.count;
 
   return (
     <div>
       <SearchFilter keywords={keywords} searchCount={movies.length} />
-      <MovieList movies={movies} keywords={keywords} propsPage={page} />
+      <MovieList
+        movies={movies}
+        total={total}
+        keywords={keywords}
+        propsPage={page}
+      />
     </div>
   );
 };

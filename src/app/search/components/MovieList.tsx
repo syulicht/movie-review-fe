@@ -10,27 +10,32 @@ type Props = {
   movies: MovieSummary[];
   propsPage: number;
   keywords: string[];
+  total: number;
 };
 
 export const MovieList = ({
   keywords,
   movies,
+  total,
   propsPage,
 }: Props): React.JSX.Element => {
   const router = useRouter();
   const handlePageChange = (page: number) => {
-    router.push(`/search?keyword=${keywords.join(" ")}&page=${page}`);
+    router.push(`/search?query=${keywords.join(" ")}&page=${page}`);
   };
   return (
     <div className="flex flex-col gap-4">
-      {movies.map((movie, index) => (
-        <MovieItem key={index} movie={movie} />
-      ))}
+      {movies.length !== 0 ? (
+        movies.map((movie, index) => <MovieItem key={index} movie={movie} />)
+      ) : (
+        <p className="text-white">表示できる映画がありません</p>
+      )}
       <div className="text-white flex flex-row justify-center">
         <Pagination
           defaultCurrent={propsPage}
           current={propsPage}
-          pageSize={10}
+          pageSize={20}
+          total={total}
           className="flex justify-center space-x-2"
           onChange={handlePageChange}
           itemRender={(page, type, element) => {

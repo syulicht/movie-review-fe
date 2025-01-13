@@ -4,6 +4,11 @@ export type RecommendedMoviesResponse = {
   movies: MovieSummary[];
 };
 
+export type SearchMoviesResponse = {
+  movies: MovieSummary[];
+  count: number;
+};
+
 export const fetchRecommendedMovies =
   async (): Promise<RecommendedMoviesResponse> => {
     const fetchResult = await fetch(
@@ -27,9 +32,9 @@ export const fetchMovieDetail = async (
 export const fetchMovieList = async (
   keyword: string,
   page: number,
-): Promise<RecommendedMoviesResponse> => {
+): Promise<SearchMoviesResponse> => {
   const fetchResult = await fetch(
-    `${process.env.BE_URL}/movies/search?keyword=${keyword}&page=${page}&sort=popular`,
+    `${process.env.BE_URL}/movies/search?query=${keyword}&page=${page}`,
     {
       cache: "no-store",
     },

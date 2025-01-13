@@ -13,7 +13,7 @@ export const Search = (): React.JSX.Element => {
       setErrorMsg("なにか入力してください");
       return;
     }
-    router.push(`/search?keyword=${keyword}&page=1`);
+    router.push(`/search?query=${keyword}&page=1`);
     setKeyword("");
     setErrorMsg("");
   };
