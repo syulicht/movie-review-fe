@@ -9,11 +9,9 @@ const SearchPage = async ({
 }: {
   searchParams: Promise<{ query: string; page: string }>;
 }) => {
-  const keywords = (await searchParams).query
-    ? (await searchParams).query.split(" ")
-    : [];
+  const query = (await searchParams).query ?? "";
   const page = Number((await searchParams).page) ?? 1;
-  if (keywords.length === 0) {
+  if (query === "") {
     return (
       <div className="space-y-4">
         {[...Array(10)].map((_, index) => (
@@ -22,19 +20,14 @@ const SearchPage = async ({
       </div>
     );
   }
-  const data = await fetchMovieList(keywords[0], page);
+  const data = await fetchMovieList(query, page);
   const movies = data.movies;
   const total = data.count;
 
   return (
     <div>
-      <SearchFilter keywords={keywords} searchCount={movies.length} />
-      <MovieList
-        movies={movies}
-        total={total}
-        keywords={keywords}
-        propsPage={page}
-      />
+      <SearchFilter query={query} searchCount={movies.length} />
+      <MovieList movies={movies} total={total} query={query} propsPage={page} />
     </div>
   );
 };

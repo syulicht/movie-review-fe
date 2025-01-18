@@ -2,12 +2,12 @@ import React from "react";
 import { Chip } from "@/components/Chip";
 
 type Props = {
-  keywords: string[];
+  query: string;
   searchCount: number;
 };
 
 export const SearchFilter = ({
-  keywords,
+  query,
   searchCount,
 }: Props): React.JSX.Element => {
   return (
@@ -15,9 +15,7 @@ export const SearchFilter = ({
       <div className="flex flex-col">
         <div>検索条件：</div>
         <div className="flex flex-row flex-wrap">
-          {keywords.map((keyword, index) => (
-            <Chip name={keyword} key={index} />
-          ))}
+          <Chip name={query} />
         </div>
       </div>
       <div>表示件数： {searchCount}件</div>

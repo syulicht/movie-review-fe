@@ -9,19 +9,19 @@ import { useRouter } from "next/navigation";
 type Props = {
   movies: MovieSummary[];
   propsPage: number;
-  keywords: string[];
+  query: string;
   total: number;
 };
 
 export const MovieList = ({
-  keywords,
+  query,
   movies,
   total,
   propsPage,
 }: Props): React.JSX.Element => {
   const router = useRouter();
   const handlePageChange = (page: number) => {
-    router.push(`/search?query=${keywords.join(" ")}&page=${page}`);
+    router.push(`/search?query=${query}&page=${page}`);
   };
   return (
     <div className="flex flex-col gap-4">
