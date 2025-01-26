@@ -3,10 +3,10 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import { RecommendedMovie } from "@/types/movie";
+import { MovieSummary } from "@/types/movie";
 
 type Props = {
-  movies: RecommendedMovie[];
+  movies: MovieSummary[];
 };
 
 export const TopCarousel = ({ movies }: Props): React.JSX.Element => {

@@ -1,8 +1,8 @@
 import React from "react";
 import { SubTop } from "./SubTop";
-import { RecommendedMovie } from "@/types/movie";
+import { MovieSummary } from "@/types/movie";
 type Props = {
-  movies: RecommendedMovie[];
+  movies: MovieSummary[];
 };
 
 export const SubTopList = ({ movies }: Props): React.JSX.Element => {
