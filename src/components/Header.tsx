@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
 import { MenuLink } from "@/components/MenuLink";
 import { Search } from "@/components/Search";
 
@@ -13,7 +13,9 @@ export const Header = (): React.JSX.Element => {
         alt="logo"
         className="ml-4"
       />
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <div className="flex flex-column w-1/5 justify-around">
         <MenuLink image="/home.svg" path="/" />
         <MenuLink image="/list.svg" path="/search?page=1" />
