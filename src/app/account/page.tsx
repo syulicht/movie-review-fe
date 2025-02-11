@@ -7,7 +7,7 @@ const AccountForm = async ({}) => {
   const cookieList = await cookies();
   const isLogin = cookieList.has("token");
   const data = await getAccountData();
-  if (!isLogin || !data.ok) {
+  if (!isLogin || !data) {
     redirect("/signin");
   }
 

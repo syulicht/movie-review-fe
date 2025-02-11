@@ -4,5 +4,4 @@ export type accountType = {
     name: string;
     profileImageUrl: string;
   };
-  ok: boolean;
 };
