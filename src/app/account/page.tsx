@@ -1,35 +1,29 @@
-import { getAccountData } from "@/actions/account";
+import { accountType } from "@/types/account";
 import { cookies } from "next/headers";
-import Image from "next/image";
 import { redirect } from "next/navigation";
+import { ProfileImage } from "./components/ProfileImage";
+import { UsernameInput } from "./components/UsernameInput";
 
 const AccountForm = async ({}) => {
   const cookieList = await cookies();
   const isLogin = cookieList.has("token");
-  const data = await getAccountData();
+  const data: accountType = /*await getAccountData()*/ {
+    user: { id: 1, name: "yusato", profileImageUrl: "nbovfao" },
+  };
   if (!isLogin || !data) {
     redirect("/signin");
   }
 
   return (
-    <div className="w-full flex flex-row justify-between mt-8">
-      <div className="rounded-full">
-        <Image src={"/account.svg"} width={350} height={350} alt="accountPic" />
-        <div className="w-full">
-          <div className="w-[50px] mr-0 ml-auto">
-            <button>
-              <Image src={"/pen.svg"} width={50} height={50} alt="edit" />
-            </button>
-          </div>
-        </div>
+    <div>
+      <div className="w-full flex flex-row justify-between mt-8">
+        <ProfileImage url={data.user.profileImageUrl} />
+        <UsernameInput defaultValue={data.user.name} />
       </div>
       <div>
-        <label className="text-white">User Name</label>
-        <input
-          type="text"
-          className="w-4/5 bg-black border-white h-12 text-white border-2 rounded-md p-4"
-          value={data.user.name}
-        />
+        <button className="bg-blue-600 rounded-xl text-white px-16 py-8">
+          Submit
+        </button>
       </div>
     </div>
   );
