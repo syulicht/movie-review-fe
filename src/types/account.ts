@@ -1,7 +1,4 @@
 export type accountType = {
-  user: {
-    id: number;
-    name: string;
-    profileImageUrl: string;
-  };
+  id: number;
+  name: string;
 };
