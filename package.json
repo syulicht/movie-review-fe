@@ -20,6 +20,8 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@smastrom/react-rating": "^1.5.0",
+    "@supabase/supabase-js": "^2.48.1",
+    "browser-image-compression": "^2.0.2",
     "embla-carousel": "^8.5.1",
     "embla-carousel-autoplay": "^8.5.1",
     "embla-carousel-react": "^8.5.1",
